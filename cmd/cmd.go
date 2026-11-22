@@ -1,33 +1,21 @@
-// Package cmd 是 mio 命令行程序：解析子命令、读取配置并启动客户端和/或服务端。
+// Package cmd implements the htunk command-line interface.
 package cmd
 
 import (
+	"os"
+
 	"github.com/spf13/cobra"
 )
 
-// defaultConfigPath 是没有用 -c 指定配置文件时读取的路径，相对当前工作目录。
-const defaultConfigPath = "config.toml"
-
-var (
-	configPath   string
-	disableColor bool
-)
-
 var mainCommand = &cobra.Command{
-	Use: "mio",
-	PersistentPreRun: func(*cobra.Command, []string) {
-		useConsoleLog()
-	},
+	Use:          "htunk",
+	Short:        "A general-purpose proxy platform",
+	SilenceUsage: true,
 }
 
-func init() {
-	mainCommand.PersistentFlags().StringVarP(&configPath, "config", "c", "", "set configuration file path")
-	mainCommand.PersistentFlags().BoolVarP(&disableColor, "disable-color", "", false, "disable color output")
-}
-
-// Execute 按 os.Args 执行对应的子命令。
+// Execute runs the command selected by the command-line arguments.
 func Execute() {
 	if err := mainCommand.Execute(); err != nil {
-		fatal(err)
+		os.Exit(1)
 	}
 }
