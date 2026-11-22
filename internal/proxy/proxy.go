@@ -4,14 +4,11 @@ package proxy
 import (
 	"context"
 	"errors"
+
+	"github.com/orgmio/htunk/internal/config"
 )
 
-// Options 保存命令行传给代理服务的设置。
-type Options struct {
-	ConfigPath string
-}
-
-// Run 预留用于加载配置并运行代理服务，直到上下文取消。
-func Run(_ context.Context, _ Options) error {
+// Run 预留用于使用已加载的配置运行代理服务，直到上下文取消。
+func Run(_ context.Context, _ config.Config) error {
 	return errors.New("proxy service is not implemented yet")
 }

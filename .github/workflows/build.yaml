@@ -1,4 +1,4 @@
-name: One night to set the show
+name: Thirty bucks at 2 a.m. , I made my brother worry
 
 on:
   #push:
@@ -13,6 +13,12 @@ jobs:
       fail-fast: false
       matrix:
         include:
+          - tag: "CGO_ENABLED=0"
+            dickname: "linux-amd64"
+          - tag: "CC=gcc"
+            dickname: "linux-amd64-glibc"
+          - tag: "CC=musl-gcc"
+            dickname: "linux-amd64-musl"
           - tag: "GOAMD64=v4 CC=gcc"
             dickname: "linux-amd64v4-glibc"
           - tag: "GOAMD64=v3 CC=gcc"
@@ -21,14 +27,8 @@ jobs:
             dickname: "linux-amd64v2-glibc"
           - tag: "GOAMD64=v1 CC=gcc"
             dickname: "linux-amd64v1-glibc"
-          - tag: "CC=gcc"
-            dickname: "linux-amd64-glibc"
-          - tag: "CC=musl-gcc"
-            dickname: "linux-amd64-musl"
-          - tag: "CGO_ENABLED=0"
-            dickname: "linux-amd64"
-          - tag: "CGO_ENABLED=0 GOARCH=arm64 GOARM64=v8.0"
-            dickname: "linux-arm64v8"
+          - tag: "CGO_ENABLED=0 GOARCH=arm64 GOARM64=v9.2"
+            dickname: "linux-arm64v9.2"
           - tag: "CGO_ENABLED=0 GOARCH=arm64"
             dickname: "linux-arm64"
           - tag: "GOOS=darwin GOARCH=arm64"
