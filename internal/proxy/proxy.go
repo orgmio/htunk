@@ -1,4 +1,4 @@
-// Package proxy provides the entry point for the proxy service.
+// proxy 包提供代理服务的运行入口。
 package proxy
 
 import (
@@ -6,13 +6,12 @@ import (
 	"errors"
 )
 
-// Options holds settings passed from the command line to the proxy service.
+// Options 保存命令行传给代理服务的设置。
 type Options struct {
-	ConfigPath   string
-	DisableColor bool
+	ConfigPath string
 }
 
-// Run is reserved for loading configuration and running the proxy service until cancellation.
+// Run 预留用于加载配置并运行代理服务，直到上下文取消。
 func Run(_ context.Context, _ Options) error {
 	return errors.New("proxy service is not implemented yet")
 }

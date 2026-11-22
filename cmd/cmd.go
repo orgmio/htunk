@@ -1,4 +1,4 @@
-// Package cmd implements the htunk command-line interface.
+// cmd 包实现 htunk 的命令行界面。
 package cmd
 
 import (
@@ -13,7 +13,7 @@ var mainCommand = &cobra.Command{
 	SilenceUsage: true,
 }
 
-// Execute runs the command selected by the command-line arguments.
+// Execute 根据命令行参数执行对应的命令。
 func Execute() {
 	if err := mainCommand.Execute(); err != nil {
 		os.Exit(1)
