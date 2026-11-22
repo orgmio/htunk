@@ -15,6 +15,7 @@ var mainCommand = &cobra.Command{
 
 // Execute 根据命令行参数执行对应的命令。
 func Execute() {
+	configureHelp()
 	if err := mainCommand.Execute(); err != nil {
 		os.Exit(1)
 	}
